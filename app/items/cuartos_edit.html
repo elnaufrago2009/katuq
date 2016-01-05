@@ -1,0 +1,49 @@
+<ol class="breadcrumb">
+  <li><a href="#items_index">Inicio</a></li>
+  <li><a href="#items_view/{{item.$id}}">Item</a></li>
+  <li><a href="#items_view/{{item.$id}}">Cuartos</a></li>
+  <li class="active">{{item.nombre}}</li>
+  <li class="pull-right active">
+  	<a href="#items_cuartos/{{id}}">Ver Cuartos</a>
+  </li>
+</ol>
+
+<div ng-if="item.simples.cantidad">
+	<h3 >Cuartos Simples</h3>
+	<div class="row">
+		<div class="col-lg-1" ng-repeat="simple in item.simples.lista">
+			<input  type="number" class="form-control" ng-model="item.simples.lista[$index].nombre" >
+		</div>
+	</div>
+			
+</div>
+
+<div ng-if="item.normales.cantidad">
+	<h3 >Cuartos Normales</h3>
+	<div class="row">
+		<div class="col-lg-1" ng-repeat="simple in item.normales.lista">
+			<input  type="number" class="form-control" ng-model="item.normales.lista[$index].nombre" >
+		</div>
+	</div>		
+</div>
+
+<div ng-if="item.dobles.cantidad">
+	<h3 >Cuartos Dobles</h3>
+	<div class="row">
+		<div class="col-lg-1" ng-repeat="simple in item.dobles.lista">
+			<input  type="number" class="form-control" ng-model="item.dobles.lista[$index].nombre" >
+		</div>
+	</div>
+</div>
+
+<div ng-if="item.departamentos.cantidad">
+	<h3 >Cuartos Departamentos</h3>
+	<div class="row">
+		<div class="col-lg-1" ng-repeat="simple in item.departamentos.lista">
+			<input  type="number" class="form-control" ng-model="item.departamentos.lista[$index].nombre" >
+		</div>
+	</div>		
+</div>
+
+<br>
+<button class="btn btn-success btn-lg" ng-click="update_lista(item)"><span class="glyphicon glyphicon-edit"></span> Editar</button>

@@ -1,0 +1,36 @@
+<ol class="breadcrumb">
+  <li><a href="#items_index">Inicio</a></li>
+  <li><a href="#items_admin">Items</a></li>
+  <li class="active">{{item.nombre}}</li>
+  <li class="pull-right active">
+  	<a href="#items_cuartos/edit/{{id}}">Editar</a>
+  </li>
+</ol>
+
+<div ng-if="item.simples.cantidad">
+	<h3 >Cuartos Simples</h3>
+	<button class="btn btn-lg" ng-repeat="simple in item.simples.lista" style="margin-right: 15px; margin-top: 15px;" ng-click="activar_simples($index)" ng-class="{'btn-primary': item.simples.lista[$index].estado == 1 , 'btn-default': item.simples.lista[$index].estado == 0}">
+		{{ simple.nombre }}
+	</button>		
+</div>
+
+<div ng-if="item.normales.cantidad">
+	<h3 >Cuartos Normales</h3>
+	<button class="btn btn-default btn-lg" ng-repeat="normal in item.normales.lista" style="margin-right: 15px;" ng-click="activar_normales($index)" ng-class="{'btn-primary': item.normales.lista[$index].estado == 1 , 'btn-default': item.normales.lista[$index].estado == 0}">
+		{{normal.nombre}}
+	</button>		
+</div>
+
+<div ng-if="item.dobles.cantidad">
+	<h3 >Cuartos Dobles</h3>
+	<button class="btn btn-default btn-lg" ng-repeat="doble in item.dobles.lista" style="margin-right: 15px;" ng-click="activar_dobles($index)" ng-class="{'btn-primary': item.dobles.lista[$index].estado == 1 , 'btn-default': item.dobles.lista[$index].estado == 0}">
+		{{doble.nombre}}
+	</button>
+</div>
+
+<div ng-if="item.departamentos.cantidad">
+	<h3 >Cuartos Departamentos</h3>
+	<button class="btn btn-default btn-lg" ng-repeat="departamento in item.departamentos.lista" style="margin-right: 15px;" ng-click="activar_departamentos($index)" ng-class="{'btn-primary': item.departamentos.lista[$index].estado == 1 , 'btn-default': item.departamentos.lista[$index].estado == 0}">
+		{{departamento.nombre}}
+	</button>	
+</div>

@@ -1,0 +1,36 @@
+<div class="page-header">
+	<h1>
+		Items 
+		<button class="btn btn-default" ng-click="openNew(item)">
+			<span class="glyphicon glyphicon-plus"></span> Nuevo
+		</button>
+	</h1>
+</div>
+
+<table class="table table-condensed table-striped">
+	<tr>
+		<th>#id</th>
+		<th>Nombre</th>
+		<th>Telefono</th>
+		<th>Acciones</th>
+	</tr>
+	<tr ng-repeat="item in items">
+		<td>{{$index}} </td>
+		<td>{{item.nombre}}</td>
+		<td>{{item.telefonos}}</td>
+		<td>
+			<a class="btn btn-primary btn-xs" href="/#items_view/{{item.$id}}">
+				<span class="glyphicon glyphicon-eye-open" ></span> View
+			</a>
+			<a class="btn btn-default btn-xs" href="#items_cuartos/{{item.$id}}">
+				<span class="glyphicon glyphicon-lock"></span> Cuartos
+			</a>
+			<button class="btn btn-success btn-xs" ng-click="openEdit(item)">
+				<span class="glyphicon glyphicon-edit"></span> Editar
+			</button>
+			<button class="btn btn-danger btn-xs" ng-click="openDelete(item)">
+				<span class="glyphicon glyphicon-trash"></span> Eliminar
+			</button>
+		</td>
+	</tr>
+</table>

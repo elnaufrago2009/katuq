@@ -1,0 +1,257 @@
+<div class="modal-header">
+	<h3>
+		<span class="glyphicon glyphicon-plus"></span> Nuevo
+	</h3>
+</div>
+
+<div class="modal-body">
+	<form class="form-horizontal">
+	
+		<div class="form-group">
+			<label class="control-label col-lg-2">Nombre</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" ng-model="item.nombre">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-lg-2">Telefonos</label>
+			<div class="col-lg-3">
+				<input type="text" class="form-control" ng-model="item.telefonos">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-lg-2">Longitude</label>
+			<div class="col-lg-3">
+				<input type="number" class="form-control" ng-model="item.longitude">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-lg-2">Latitude</label>
+			<div class="col-lg-5">
+				<input type="number" class="form-control" ng-model="item.latitude">
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<label class="control-label col-lg-2">Ciudad</label>
+			<div class="col-lg-5">
+				<input type="text" class="form-control" ng-model="item.distrito">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-lg-2">Direccion</label>
+			<div class="col-lg-5">
+				<input type="text" class="form-control" ng-model="item.direccion">	
+			</div>			
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-lg-2">Descripcion</label>
+			<div class="col-lg-6">
+				<textarea class="form-control" rows="6" ng-model="item.descripcion"></textarea>
+			</div>		
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-lg-2">Servicios</label>
+			<div class="col-lg-3">
+				<select class="form-control" multiple ng-model="item.servicios">					
+					<option value="Cochera">Cochera</option>
+					<option value="Bar">Bar</option>
+					<option value="Piscina">Piscina</option>
+					<option value="Sala de Conferencias">Sala de Conferencias</option>
+					<option value="Internet">Internet Wifi</option>		
+					<option value="cableTV">cableTV</option>
+					<option value="Estacionamiento">Estacionamiento</option>
+					<option value="Bar">Bar</option>					
+				</select>
+			</div>				
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-lg-2">Cuartos</label>
+			<div class="col-lg-9">
+				<uib-tabset>
+					<uib-tab heading="Simples">
+			          <br>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Cantidad</label>
+			            <div class="col-lg-2">
+			              <input type="number" class="form-control" ng-model="item.simples.cantidad" placeholder="10" required>			              
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Precio</label>
+			            <div class="col-lg-2">
+			              <input type="text" class="form-control" ng-model="item.simples.precio" placeholder="25.00" required>
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Servicios</label>
+			            <div class="col-lg-4">
+			            	<select multiple ng-model="item.simples.servicios" class ="form-control" required>
+				                <option value="Un Baño Privado">Un Baño Privado</option>
+				                <option value="Dos Baño Privado">Dos Baño Privado</option>
+				                <option value="TV Normal">TV Normal</option>
+				                <option value="TV Cable">TV Cable</option>
+				                <option value="Internet Wifi">Internet Wifi</option>
+				                <option value="Agua Caliente">Agua Caliente</option>
+			              	</select>			              
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Descripcion</label>
+			            <div class="col-lg-7">
+			              <textarea ng-model="item.simples.descripcion" class="form-control" rows="3"></textarea>
+			            </div>
+			          </div>
+			        </uib-tab>
+			        <uib-tab heading="Normal">
+			          <br>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Cantidad</label>
+			            <div class="col-lg-2">
+			              <input type="number" class="form-control" ng-model="item.normales.cantidad" placeholder="5" required>
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Precio</label>
+			            <div class="col-lg-2">
+			              <input type="text" class="form-control" ng-model="item.normales.precio" placeholder="30.00" required>
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Servicios</label>
+			            <div class="col-lg-4">
+			            	<select multiple ng-model="item.normales.servicios" class ="form-control" required>
+				                <option value="Un Baño Privado">Un Baño Privado</option>
+				                <option value="Dos Baño Privado">Dos Baño Privado</option>
+				                <option value="TV Normal">TV Normal</option>
+				                <option value="TV Cable">TV Cable</option>
+				                <option value="Internet Wifi">Internet Wifi</option>
+				                <option value="Agua Caliente">Agua Caliente</option>
+			              	</select>			              
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Descripcion</label>
+			            <div class="col-lg-7">
+			              <textarea ng-model="item.normales.descripcion" class="form-control" rows="3"></textarea>
+			            </div>
+			          </div>			          
+			        </uib-tab>
+			        <uib-tab heading="Dobles">
+			          <br>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Cantidad</label>
+			            <div class="col-lg-2">
+			              <input type="number" class="form-control" ng-model="item.dobles.cantidad" placeholder="3" required>
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Precio</label>
+			            <div class="col-lg-2">
+			              <input type="text" class="form-control" ng-model="item.dobles.precio" placeholder="50.00" required>
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Servicios</label>
+			            <div class="col-lg-4">
+			            	<select multiple ng-model="item.dobles.servicios" class ="form-control" required>
+				                <option value="Un Baño Privado">Un Baño Privado</option>
+				                <option value="Dos Baño Privado">Dos Baño Privado</option>
+				                <option value="TV Normal">TV Normal</option>
+				                <option value="TV Cable">TV Cable</option>
+				                <option value="Internet Wifi">Internet Wifi</option>
+				                <option value="Agua Caliente">Agua Caliente</option>
+			              	</select>			              
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Descripcion</label>
+			            <div class="col-lg-7">
+			              <textarea ng-model="item.dobles.descripcion" class="form-control" rows="3"></textarea>
+			            </div>
+			          </div>
+			        </uib-tab>
+			    	<uib-tab heading="Departamentos">
+			          <br>
+			          <div class="form-group">
+			            <label class="col-lg-2 control-label">Cantidad</label>
+			            <div class="col-lg-2">
+			              <input type="number" class="form-control" ng-model="item.departamentos.cantidad" placeholder="2" required>
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Precio</label>
+			            <div class="col-lg-2">
+			              <input type="text" class="form-control" ng-model="item.departamentos.precio" placeholder="300.00" required>
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Servicios</label>
+			            <div class="col-lg-4">
+			              <select multiple ng-model="item.departamentos.servicios" class ="form-control" required>
+			                <option value="Un Baño Privado">Un Baño Privado</option>
+			                <option value="Dos Baño Privado">Dos Baño Privado</option>
+			                <option value="TV Normal">TV Normal</option>
+			                <option value="TV Cable">TV Cable</option>
+			                <option value="Internet Wifi">Internet Wifi</option>
+			                <option value="Agua Caliente">Agua Caliente</option>
+			              </select>
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-2 control-label">Descripcion</label>
+			            <div class="col-lg-7">
+			              <textarea ng-model="item.departamentos.descripcion" class="form-control" rows="3"></textarea>
+			            </div>
+			          </div>			          
+			    	</uib-tab>			        
+				</uib-tabset>
+			</div>
+		</div>
+
+		<!-- Imagen -->
+		<div class="form-group">
+	    	<label class="col-lg-3 control-label">Imagen</label>
+		    <div class="col-lg-7">
+		      	<button class="btn btn-default" ngf-select="agregar_fotos($files)" multiple accept="image/*" ><i class="fa fa-image"></i> Seleccionar</button>
+		      	<br>
+		      	<table class="table table-condensed">
+		      		<tr ng-repeat="foto in archivos">
+		      			<td>
+		      				<div class="progress" style="margin: 0px;">
+							  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{foto.progress}}%;">
+							    {{foto.name}} {{foto.progress}}%
+							  </div>
+							</div>
+		      			</td>
+		      			<td>
+		      				<button class="btn btn-default btn-xs" ng-click="eliminar_archivo($index)">
+		      					<span class="glyphicon glyphicon-remove"></span>
+		      				</button>		      				
+		      			</td>
+		      		</tr>		      		
+		      	</table>
+		    </div>
+	  	</div>
+
+	</form>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="add(portafolio)">
+		<span class="glyphicon glyphicon-save"></span>
+		Crear
+	</button>
+	<button class="btn btn-warning" ng-click="cancel()">
+		<span class="glyphicon glyphicon-circle"></span> 
+		Cancelar
+	</button>
+</div>

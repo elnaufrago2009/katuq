@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="katuq">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Katuq</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lora">
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+	<!-- Assets Js -->	
+	<script src="http://maps.google.com/maps/api/js"></script>
+	<script src="assets/js/angular.js"></script>
+	<script src="assets/js/angular-route.js"></script>
+	<script src="assets/js/ui-bootstrap-tpls.js"></script>
+  	<script src="assets/js/firebase.js"></script>
+  	<script src="assets/js/angularfire.js"></script>
+  	<script src="assets/js/ng-file-upload.js"></script>
+  	<script src="assets/js/angular-animate.js"></script>
+  	<script src="assets/js/ng-map.min.js"></script>
+
+
+  	<!-- App Js -->
+	<script src="app/app.js"></script>
+	<script src="app/items/controller.js"></script>
+	<script src="app/shared/controller.js"></script>
+
+</head>
+<body style="font-family: 'Lora'">
+
+	<!-- Menu -->
+	<nav class="navbar navbar-default navbar-static-top" style="font-size: 20px; ">
+      	<div class="container">
+        	<div class="navbar-header">
+          		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            	<span class="sr-only">Toggle navigation</span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+          		</button>
+          		<a class="navbar-brand" href="#items">Katuq.com</a>
+        	</div>
+	        <div class="navbar-collapse collapse" ng-controller="menuController">	        
+	          	<!-- Inicio menu izquierdo-->
+	          	<ul class="nav navbar-nav">
+	              	<li ng-class="{active: isActive('/items')}">
+	            		<a href="#items">Items</a>
+	            	</li>
+	            	<li ng-class="{active: isActive('/items_admin')}">
+	            		<a href="#items_admin">Items Index</a>
+	            	</li>
+	          	</ul>
+	          	<!-- Inicio menu Derecho -->
+	          	<ul class="nav navbar-nav navbar-right">
+	            	<li ng-show="login == false">
+	              		<a ng-class="{active:isActive('/sign_in')}" href="sign_in">
+	                		<span class="glyphicon glyphicon-user"></span> login
+	              		</a>
+	            	</li>
+	          	</ul>         
+	        </div><!--/.nav-collapse -->
+    	</div>
+    </nav>
+    <!-- End Menu -->
+
+    <div class="container" ng-view></div>
+
+    <footer>
+        <div class="container">
+            <hr>
+            <div class="text-left">
+                By Abraham M. Linares O.
+            </div>
+            <br>
+        </div>
+    </footer>
+
+</body>
+</html>

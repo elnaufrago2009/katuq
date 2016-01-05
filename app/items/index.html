@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="col-lg-6">
+		<h1>Items <small>Ultimos Agregados</small></h1>
+	</div>
+	<div class="col-lg-3 pull-right">
+		<br>
+		<input type="text" ng-model="buscar" class="form-control pull-right" placeholder="Buscar">
+	</div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-sm-3" ng-repeat="item in items | filter:buscar">    
+    <div class="thumbnail">
+    	<a href="#items_view/{{item.$id}}">
+      		<img ng-src="{{item.fotos[0] ? 'https://s3-us-west-2.amazonaws.com/katuq/' + item.fotos[0] : 'http://placehold.it/300x300' }}" class="img-responsive" id="item_img" style="margin:auto; height: 250px; width: 300px">
+      	</a>
+      <div class="caption">
+        <h3>{{item.nombre}}</h3>
+        <table class="table table-condensed">           
+        	<tr ng-hide="item.depa.cantidad === undefined">
+            	<td>
+            		<b>Precio</b>
+            	</td>
+                <td>
+                	<code>{{item.depa.cantidad}} und.</code>
+                </td>
+            </tr>
+            <tr ng-show="item.depa.cantidad === undefined">
+            	<td>
+            		<b>Cuartos Simples</b>
+            	</td>
+                <td>
+                	<code>no definido</code>
+                </td>
+            </tr>
+            <tr ng-hide="item.matri.cantidad === undefined">
+            	<td>
+            		<b>Cuartos Simples</b>
+            	</td>
+                <td>
+                	<code>{{item.matri.cantidad}} und.</code>
+                </td>
+            </tr>
+            <tr ng-show="item.matri.cantidad === undefined">
+            	<td>
+            		<b>Matrimoniales</b>
+            	</td>
+                <td>
+                	<code>no definido</code>
+                </td>
+            </tr>
+         
+        </table>        
+        <p class="text-center">
+            <a class="btn btn-default" href="#items_view/{{item.$id}}">
+            	<span class="glyphicon glyphicon-eye-open"></span> Ver Informacion
+            </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

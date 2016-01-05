@@ -1,0 +1,204 @@
+<div class="row" style="font-size: 15px; ">
+    <div class="col-lg-8">
+        <ol class="breadcrumb">
+          <li><a href="#items_index">Inicio</a></li>
+          <li><a href="#items_index">Items</a></li>
+          <li class="active">{{item.nombre}} </li>
+        </ol>
+    </div>
+    <div class="col-lg-4 text-right">
+        <h4 style="color: #8A8A8A;">{{item.distrito}}</h4>
+    </div>
+</div>       
+
+<div class="row">
+    <div class="col-lg-8">
+        <h1>{{item.nombre}}</h1>
+    </div>
+    <div class="col-lg-4 text-right">
+        <h3 style="color: #8A8A8A;">Desde {{item.simples.precio}} S/.</h3>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-lg-8">
+		<uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+	      <uib-slide ng-repeat="slide in item.fotos">
+	        <img ng-src="https://s3-us-west-2.amazonaws.com/katuq/{{slide}}" style="margin:auto; height: 450px; width: 750px">
+            <div class="carousel-caption">
+                <h4>{{item.nombre + $index}}</h4>
+                <p>{{slide}}</p>
+            </div>
+	      </uib-slide>
+	    </uib-carousel>
+	</div>
+	<div class="col-lg-4">
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span> Contactar Online                
+            </div>
+            <div class="panel-body" style="height: 360px; overflow-y: scroll;">                   
+                        <div class="clearfix">                           
+                            <strong class="primary-font">Jack Sparrow</strong>                           
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                        <div class="clearfix">                           
+                            <strong class="primary-font">Jack Sparrow</strong>                           
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                        <div class="clearfix">                           
+                            <strong class="primary-font">Jack Sparrow</strong>                           
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                        <div class="clearfix">                           
+                            <strong class="primary-font">Jack Sparrow</strong>                           
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                        <div class="clearfix">                           
+                            <strong class="primary-font">Jack Sparrow</strong>                           
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                        <div class="clearfix">                           
+                            <strong class="primary-font">Jack Sparrow</strong>                           
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                                       
+               
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning btn-sm" id="btn-chat">Enviar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <table class="table">
+                <tr>
+                    <td width="1%"></td>
+                    <td colspan="2"><h4><span class="glyphicon glyphicon-barcode"></span> Informacion del Item</h4></td>
+                </tr>
+                <tr>
+                    <td width="1%"></td>
+                    <td width="25%">Telefono</td>
+                    <td>: {{item.telefonos}}</td>
+                </tr>
+                <tr>
+                    <td width="1%"></td>
+                    <td width="25%">Direccion</td>
+                    <td>: {{item.direccion}}</td>
+                </tr>
+                <tr>
+                    <td width="1%"></td>
+                    <td width="25%">Servicios Generales</td>
+                    <td>
+                        <p ng-repeat="servicio in item.servicios">
+                            {{servicio}}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1%"></td>
+                    <td width="20%">Descripcion :</td>
+                    <td>{{item.descripcion}}</td>
+                </tr>
+            </table>            
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-body">Hoshi Saga    Hoshi Saga 3    Hoshi Saga Ringo    Hoshi Saga Ringoame
+              <table class="table">
+                    <tr>
+                        <td colspan="3">
+                            <h4><span class="glyphicon glyphicon-refresh"></span> Informacion Tiempo Real</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Costo</th>
+                        <th>Disponible</th>
+                    </tr>
+                    <tr ng-if="item.simples.lista.length !== 0">
+                        <td>Simples</td>
+                        <td>{{item.simples.precio}} S/.</td>
+                        <td>5/{{item.simples.cantidad}}</td>
+                    </tr>
+                    <tr ng-if="item.normales.lista.length !== 0">
+                        <td>Normales</td>
+                        <td>{{item.normales.precio}} S/.</td>
+                        <td>5/{{item.normales.cantidad}}</td>
+                    </tr>
+                    <tr ng-if="item.dobles.lista.length !== 0">
+                        <td >Dobles</td>
+                        <td>{{item.dobles.precio}} S/.</td>
+                        <td>5/{{item.dobles.cantidad}}</td>
+                    </tr>
+                    <tr ng-if="item.departamentos.lista.length !== 0">
+                        <td >Departamentos</td>
+                        <td>{{item.departamentos.precio}} S/.</td>
+                        <td>5/{{item.departamentos.cantidad}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>  
+<div class="row">
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>Ubicacion Geografica</h4>
+                <hr>
+                <ng-map 
+                  center="{{item.latitude}}, {{item.longitude}}"
+                  zoom="19"                  
+                  tilt="45"                  
+                  heading="90"                  
+                  scrollwheel="false">        
+                  <marker position="{{item.latitude}}, {{item.longitude}}" title="Hello World!"></marker>            
+                </ng-map>   
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        
+    </div>
+</div>
+
+
+
+
+	    
+
+
+

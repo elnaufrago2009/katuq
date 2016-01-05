@@ -1,0 +1,9 @@
+{
+  "firebase": "katuq",
+  "public": "../katuq",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
