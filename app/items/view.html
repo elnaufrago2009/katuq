@@ -126,44 +126,46 @@
                     <td width="20%">Descripcion :</td>
                     <td>{{item.descripcion}}</td>
                 </tr>
-            </table>            
+            </table>
+
         </div>
     </div>
     <div class="col-lg-4">
         <div class="panel panel-default">
-            <div class="panel-body">Hoshi Saga    Hoshi Saga 3    Hoshi Saga Ringo    Hoshi Saga Ringoame
-              <table class="table">
+            <div class="panel-body">
+              <table class="table table-striped">
                     <tr>
                         <td colspan="3">
-                            <h4><span class="glyphicon glyphicon-refresh"></span> Informacion Tiempo Real</h4>
+                            <h4><span class="glyphicon glyphicon-refresh"></span> Cuartos Informacion Actual</h4>
                         </td>
                     </tr>
                     <tr>
                         <th>Nombre</th>
-                        <th>Costo</th>
-                        <th>Disponible</th>
+                        <th>Costo (Soles)</th>
+                        <th>Disponibles (Und)</th>
                     </tr>
-                    <tr ng-if="item.simples.lista.length !== 0">
+                    <tr ng-hide="item.simples.cantidad == undefined">
                         <td>Simples</td>
-                        <td>{{item.simples.precio}} S/.</td>
-                        <td>5/{{item.simples.cantidad}}</td>
+                        <td>{{item.simples.precio}} </td>
+                        <td> de {{item.simples.cantidad}}</td>
                     </tr>
-                    <tr ng-if="item.normales.lista.length !== 0">
+                    <tr ng-hide="item.normales.cantidad == undefined">
                         <td>Normales</td>
-                        <td>{{item.normales.precio}} S/.</td>
-                        <td>5/{{item.normales.cantidad}}</td>
+                        <td>{{item.normales.precio}} </td>
+                        <td>5 de {{item.normales.cantidad}}</td>
                     </tr>
-                    <tr ng-if="item.dobles.lista.length !== 0">
+                    <tr ng-hide="item.dobles.cantidad == undefined">
                         <td >Dobles</td>
-                        <td>{{item.dobles.precio}} S/.</td>
-                        <td>5/{{item.dobles.cantidad}}</td>
+                        <td>{{item.dobles.precio}} </td>
+                        <td>5 de {{item.dobles.cantidad}}</td>
                     </tr>
-                    <tr ng-if="item.departamentos.lista.length !== 0">
+                    <tr ng-hide="item.departamentos.cantidad == undefined">
                         <td >Departamentos</td>
-                        <td>{{item.departamentos.precio}} S/.</td>
-                        <td>5/{{item.departamentos.cantidad}}</td>
+                        <td>{{item.departamentos.precio}} </td>
+                        <td>5 de {{item.departamentos.cantidad}}</td>
                     </tr>
                 </table>
+                {{prueba}}
             </div>
         </div>
     </div>

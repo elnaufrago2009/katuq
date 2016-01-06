@@ -246,6 +246,10 @@ app.controller('itemsViewController', function($scope, $routeParams, $firebaseOb
 	var ref = new Firebase("https://katuq.firebaseio.com/items/");	
 	$scope.item = $firebaseObject(ref.child($scope.id));
 
+	$scope.prueba = $scope.item.simples.cantidad;
+	//if($scope.item.simples.cantidad == undefined){
+		//$scope.prueba = "cantidad undefined";
+	//}
 	// google map
 	var vm = this;
     NgMap.getMap().then(function(map) {
