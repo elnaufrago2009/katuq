@@ -58,10 +58,6 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 
 		
 		itemNew.result.then(function(item){			
-			//item.simples.disponibles = item.simples.cantidad;
-			//item.normales.disponibles = item.normales.cantidad;
-			//item.dobles.disponibles = item.dobles.cantidad;
-			//item.departamentos.disponibles = item.departamentos.cantidad;
 
 			// simples lista add
 			if(item.simples != undefined){				
@@ -71,6 +67,7 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 						item.simples.lista.push({nombre: i, estado: 0});
 					}
 				}
+				item.simples.disponibles = item.simples.cantidad;
 			}
 
 			if(item.normales != undefined){
@@ -80,6 +77,7 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 						item.normales.lista.push({nombre: i, estado: 0});
 					}
 				}
+				item.normales.disponibles = item.normales.cantidad;
 			}
 
 			if(item.dobles != undefined){
@@ -89,6 +87,7 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 						item.dobles.lista.push({nombre: i, estado: 0});
 					}
 				}
+				item.dobles.disponibles = item.dobles.cantidad;
 			}
 
 			if(item.departamentos != undefined){
@@ -97,11 +96,16 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 					for (var i=1; i <= item.departamentos.cantidad; i++){
 						item.departamentos.lista.push({nombre: i, estado: 0});
 					}
-				}
+				}				
+				item.departamentos.disponibles = item.departamentos.cantidad;
 			}
 
+			// antes de crear uno nuevo agregamos mensaje inicial
+			item.messages = [];
+			item.messages.push({user:'Admin', contenido: 'Bievenido aqui puedes mandar tus mensajes'});
+			// agregamos item
 			items.add(item);
-			//console.log(item.simples.disponibles);
+			
 		});
 	};
 
@@ -125,7 +129,9 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 					for (var i=1; i <= item.simples.cantidad; i++){
 						item.simples.lista.push({nombre: i, estado: 0});
 					}
+					item.simples.disponibles = item.simples.cantidad;
 				}
+				
 			}
 
 			if(item.normales != undefined){
@@ -134,7 +140,9 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 					for (var i=1; i <= item.normales.cantidad; i++){
 						item.normales.lista.push({nombre: i, estado: 0});
 					}
+					item.normales.disponibles = item.normales.cantidad;
 				}
+				
 			}
 
 			if(item.dobles != undefined){
@@ -143,7 +151,9 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 					for (var i=1; i <= item.dobles.cantidad; i++){
 						item.dobles.lista.push({nombre: i, estado: 0});
 					}
+					item.dobles.disponibles = item.dobles.cantidad;
 				}
+				
 			}
 
 			if(item.departamentos != undefined){
@@ -152,8 +162,12 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 					for (var i=1; i <= item.departamentos.cantidad; i++){
 						item.departamentos.lista.push({nombre: i, estado: 0});
 					}
+					item.departamentos.disponibles = item.departamentos.cantidad;
 				}
+				
 			}
+
+			// editamos el item
 			items.edit(item);
 		});
 	};
@@ -192,7 +206,15 @@ app.controller('itemsCuartosController', function($scope, $routeParams, $firebas
 			$scope.item.simples.lista[index].estado = 0;
 		}else {
 			$scope.item.simples.lista[index].estado = 1;
+		}
+
+		var dispo = 0;
+		for (var i=0; i< $scope.item.simples.cantidad; i++){
+			if($scope.item.simples.lista[i].estado == 0){
+				dispo++
+			}
 		}		
+		$scope.item.simples.disponibles = dispo;
 		$scope.item.$save($scope.item);
 	};
 
@@ -202,7 +224,15 @@ app.controller('itemsCuartosController', function($scope, $routeParams, $firebas
 			$scope.item.normales.lista[index].estado = 0;
 		}else {
 			$scope.item.normales.lista[index].estado = 1;
+		}	
+		var dispo = 0;
+		for (var i=0; i< $scope.item.normales.cantidad; i++){
+			if($scope.item.normales.lista[i].estado == 0){
+				dispo++
+			}
 		}		
+		$scope.item.normales.disponibles = dispo;
+
 		$scope.item.$save($scope.item);
 	};
 
@@ -212,7 +242,15 @@ app.controller('itemsCuartosController', function($scope, $routeParams, $firebas
 			$scope.item.dobles.lista[index].estado = 0;
 		}else {
 			$scope.item.dobles.lista[index].estado = 1;
+		}
+		var dispo = 0;
+		for (var i=0; i< $scope.item.dobles.cantidad; i++){
+			if($scope.item.dobles.lista[i].estado == 0){
+				dispo++
+			}
 		}		
+		$scope.item.dobles.disponibles = dispo;
+
 		$scope.item.$save($scope.item);
 	};
 
@@ -222,7 +260,14 @@ app.controller('itemsCuartosController', function($scope, $routeParams, $firebas
 			$scope.item.departamentos.lista[index].estado = 0;
 		}else {
 			$scope.item.departamentos.lista[index].estado = 1;
+		}
+		var dispo = 0;
+		for (var i=0; i< $scope.item.departamentos.cantidad; i++){
+			if($scope.item.departamentos.lista[i].estado == 0){
+				dispo++
+			}
 		}		
+		$scope.item.departamentos.disponibles = dispo;
 		$scope.item.$save($scope.item);
 	};
 });
@@ -242,14 +287,25 @@ app.controller('itemsCuartosEditController', function($scope, $routeParams, $fir
 // controller items View
 app.controller('itemsViewController', function($scope, $routeParams, $firebaseObject, NgMap){
 
+
+
     $scope.id = $routeParams.id;
 	var ref = new Firebase("https://katuq.firebaseio.com/items/");	
 	$scope.item = $firebaseObject(ref.child($scope.id));
 
-	$scope.prueba = $scope.item.simples.cantidad;
-	//if($scope.item.simples.cantidad == undefined){
-		//$scope.prueba = "cantidad undefined";
-	//}
+	// datos de usuario del chat	
+	$scope.user = "Usuario" + Math.round(Math.random()*10000);
+	$scope.guardarMessage = function (message){
+		//$scope.item.messages = [];
+		$scope.item.messages.push({user: $scope.user, contenido: $scope.message});
+		// agregamos item
+		//
+		console.log($scope.message + $scope.user);
+		$scope.message = '';
+		$scope.item.$save();
+	};
+
+	
 	// google map
 	var vm = this;
     NgMap.getMap().then(function(map) {

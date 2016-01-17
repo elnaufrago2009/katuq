@@ -1,10 +1,20 @@
 <div class="row">
 	<div class="col-lg-6">
-		<h1>Items <small>Ultimos Agregados</small></h1>
+		<h1>Hospedajes <small>Ultimos Agregados</small></h1>
 	</div>
-	<div class="col-lg-3 pull-right">
+	<div class="col-lg-6 pull-right">
 		<br>
-		<input type="text" ng-model="buscar" class="form-control pull-right" placeholder="Buscar">
+        <form class="form-inline pull-right">            
+    		<input type="text" ng-model="buscar" class="form-control input-lg" placeholder="Buscar Hotel">
+            <select class="form-control input-lg btn btn-success btn-lg">
+                <option value="">Departamento</option>
+                <option value="cono sur">Cono Sur</option>
+                <option value="">Natividad</option>
+                <option value="">Ciudad Nueva</option>
+                <option value="">Centro Tacna</option>
+                <option value="">Boca del Rio</option>
+            </select>            
+        </form>
 	</div>
 </div>
 <hr>
@@ -16,45 +26,45 @@
       		<img ng-src="{{item.fotos[0] ? 'https://s3-us-west-2.amazonaws.com/katuq/' + item.fotos[0] : 'http://placehold.it/300x300' }}" class="img-responsive" id="item_img" style="margin:auto; height: 250px; width: 300px">
       	</a>
       <div class="caption">
-        <h3>{{item.nombre}}</h3>
-        <table class="table table-condensed">           
-        	<tr ng-hide="item.depa.cantidad === undefined">
+        <h3>{{item.nombre}} <small>({{item.simples.precio}} S/.)</small></h3>
+        <table class="table table-condensed">                   	
+            <tr ng-show="item.simples.cantidad == undefined">
             	<td>
-            		<b>Precio</b>
+            		<b>Cuartos Simples </b>
             	</td>
                 <td>
-                	<code>{{item.depa.cantidad}} und.</code>
+                	<code>No Definido</code>
                 </td>
             </tr>
-            <tr ng-show="item.depa.cantidad === undefined">
-            	<td>
-            		<b>Cuartos Simples</b>
-            	</td>
+            <tr ng-hide="item.simples.cantidad == undefined">
                 <td>
-                	<code>no definido</code>
+                    <b>Cuartos Simples </b>
                 </td>
-            </tr>
-            <tr ng-hide="item.matri.cantidad === undefined">
-            	<td>
-            		<b>Cuartos Simples</b>
-            	</td>
                 <td>
-                	<code>{{item.matri.cantidad}} und.</code>
+                    <code>{{item.simples.disponibles}}/{{item.simples.cantidad}}</code>
                 </td>
             </tr>
-            <tr ng-show="item.matri.cantidad === undefined">
-            	<td>
-            		<b>Matrimoniales</b>
-            	</td>
+
+            <tr ng-show="item.dobles.cantidad == undefined">
                 <td>
-                	<code>no definido</code>
+                    <b>Cuartos dobles </b>
+                </td>
+                <td>
+                    <code>No Definido</code>
                 </td>
             </tr>
-         
+            <tr ng-hide="item.dobles.cantidad == undefined">
+                <td>
+                    <b>Cuartos dobles </b>
+                </td>
+                <td>
+                    <code>{{item.dobles.disponibles}}/{{item.dobles.cantidad}}</code>
+                </td>
+            </tr>
         </table>        
         <p class="text-center">
-            <a class="btn btn-default" href="#items_view/{{item.$id}}">
-            	<span class="glyphicon glyphicon-eye-open"></span> Ver Informacion
+            <a class="btn btn-primary" href="#items_view/{{item.$id}}">
+            	<span class="glyphicon glyphicon-eye-open"></span> Ver mas.
             </a>
         </p>
       </div>

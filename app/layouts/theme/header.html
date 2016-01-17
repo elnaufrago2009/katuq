@@ -1,0 +1,34 @@
+	<!-- Menu -->
+	<style type="text/css" media="screen">
+		.angular-google-map-container { height: 400px; }
+	</style>
+	<nav class="navbar navbar-default navbar-static-top" style="font-size: 20px; ">
+      	<div class="container">
+        	<div class="navbar-header">
+          		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            	<span class="sr-only">Toggle navigation</span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+          		</button>
+          		<a class="navbar-brand" href="#items"><span class="glyphicon glyphicon-home"></span> Katuq.com</a>
+        	</div>
+	        <div class="navbar-collapse collapse" ng-controller="menuController">	        
+	          	<!-- Inicio menu izquierdo-->
+	          	<ul class="nav navbar-nav">	              	
+	            	<li ng-class="{active: isActive('/items_admin')}">
+	            		<a href="#items_admin">Administrar</a>
+	            	</li>
+	          	</ul>
+	          	<!-- Inicio menu Derecho -->
+	          	<ul class="nav navbar-nav navbar-right">
+	            	<li>
+	              		<a ng-class="{active:isActive('/sign_in')}" href="sign_in">
+	                		Iniciar Session
+	              		</a>
+	            	</li>
+	          	</ul>         
+	        </div><!--/.nav-collapse -->
+    	</div>
+    </nav>
+    <!-- End Menu -->

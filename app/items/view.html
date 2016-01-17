@@ -6,17 +6,14 @@
           <li class="active">{{item.nombre}} </li>
         </ol>
     </div>
-    <div class="col-lg-4 text-right">
-        <h4 style="color: #8A8A8A;">{{item.distrito}}</h4>
-    </div>
 </div>       
 
 <div class="row">
     <div class="col-lg-8">
-        <h1>{{item.nombre}}</h1>
+        <h1>{{item.nombre}} <small> - Hubicado en {{item.distrito}}</small></h1>
     </div>
     <div class="col-lg-4 text-right">
-        <h3 style="color: #8A8A8A;">Desde {{item.simples.precio}} S/.</h3>
+        <h2 style="color: #8A8A8A;"><code>Desde {{item.simples.precio}} S/.</code></h2>
     </div>
 </div>
 
@@ -37,58 +34,22 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-comment"></span> Contactar Online                
             </div>
-            <div class="panel-body" style="height: 360px; overflow-y: scroll;">                   
-                        <div class="clearfix">                           
-                            <strong class="primary-font">Jack Sparrow</strong>                           
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                        <div class="clearfix">                           
-                            <strong class="primary-font">Jack Sparrow</strong>                           
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                        <div class="clearfix">                           
-                            <strong class="primary-font">Jack Sparrow</strong>                           
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                        <div class="clearfix">                           
-                            <strong class="primary-font">Jack Sparrow</strong>                           
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                        <div class="clearfix">                           
-                            <strong class="primary-font">Jack Sparrow</strong>                           
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                        <div class="clearfix">                           
-                            <strong class="primary-font">Jack Sparrow</strong>                           
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                dolor, quis ullamcorper ligula sodales.
-                            </p>
-                        </div>
-                                       
-               
+            <div class="panel-body" style="height: 360px; overflow-y: scroll;">            
+                <div class="clearfix" ng-repeat="message in item.messages">                           
+                    <strong class="primary-font">{{message.user}}</strong>                           
+                    <p>
+                        {{message.contenido}}
+                    </p>
+                </div>               
             </div>
             <div class="panel-footer">
                 <div class="input-group">
-                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                    <span class="input-group-btn">
-                        <button class="btn btn-warning btn-sm" id="btn-chat">Enviar</button>
-                    </span>
+                    <form ng-submit="guardarMessage()" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="message">
+                        </div>
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -133,36 +94,36 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-body">
-              <table class="table table-striped">
+              <table class="table">
                     <tr>
                         <td colspan="3">
-                            <h4><span class="glyphicon glyphicon-refresh"></span> Cuartos Informacion Actual</h4>
+                            <h4><span class="glyphicon glyphicon-refresh"></span> Disponibilidad y <strong>Precios</strong></h4>
                         </td>
                     </tr>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Costo (Soles)</th>
+                    <tr class="active">
+                        <th>Habitaciones</th>
+                        <th>Precio S/.</th>
                         <th>Disponibles (Und)</th>
                     </tr>
-                    <tr ng-hide="item.simples.cantidad == undefined">
+                    <tr ng-hide="item.simples.cantidad == undefined" class="success">
                         <td>Simples</td>
                         <td>{{item.simples.precio}} </td>
-                        <td> de {{item.simples.cantidad}}</td>
-                    </tr>
-                    <tr ng-hide="item.normales.cantidad == undefined">
+                        <td><code>{{item.simples.disponibles}} de {{item.simples.cantidad}}</code></td>
+                    </tr >
+                    <tr ng-hide="item.normales.cantidad == undefined" class="warning">
                         <td>Normales</td>
                         <td>{{item.normales.precio}} </td>
-                        <td>5 de {{item.normales.cantidad}}</td>
+                        <td><code>{{item.normales.disponibles}} de {{item.normales.cantidad}}</code></td>
                     </tr>
-                    <tr ng-hide="item.dobles.cantidad == undefined">
+                    <tr ng-hide="item.dobles.cantidad == undefined" class="info">
                         <td >Dobles</td>
                         <td>{{item.dobles.precio}} </td>
-                        <td>5 de {{item.dobles.cantidad}}</td>
+                        <td><code>{{item.dobles.disponibles}} 5 de {{item.dobles.cantidad}}</code></td>
                     </tr>
-                    <tr ng-hide="item.departamentos.cantidad == undefined">
+                    <tr ng-hide="item.departamentos.cantidad == undefined" class="danger">
                         <td >Departamentos</td>
                         <td>{{item.departamentos.precio}} </td>
-                        <td>5 de {{item.departamentos.cantidad}}</td>
+                        <td><code>{{item.departamentos.disponibles}} de {{item.departamentos.cantidad}}</code></td>
                     </tr>
                 </table>
                 {{prueba}}
@@ -178,11 +139,11 @@
                 <hr>
                 <ng-map 
                   center="{{item.latitude}}, {{item.longitude}}"
-                  zoom="19"                  
+                  zoom="18"                  
                   tilt="45"                  
                   heading="90"                  
                   scrollwheel="false">        
-                  <marker position="{{item.latitude}}, {{item.longitude}}" title="Hello World!"></marker>            
+                  <marker position="{{item.latitude}}, {{item.longitude}}"></marker>            
                 </ng-map>   
             </div>
         </div>
@@ -196,11 +157,3 @@
         
     </div>
 </div>
-
-
-
-
-	    
-
-
-
