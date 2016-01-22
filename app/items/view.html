@@ -1,4 +1,4 @@
-<div class="row" style="font-size: 15px; ">
+<div class="row">
     <div class="col-lg-8">
         <ol class="breadcrumb">
           <li><a href="#items_index">Inicio</a></li>
@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col-lg-8">
-        <h1>{{item.nombre}} <small> - Hubicado en {{item.distrito}}</small></h1>
+        <h1>{{item.nombre}} <small> - Ubicado en {{item.distrito}}</small></h1>
     </div>
     <div class="col-lg-4 text-right">
         <h2 style="color: #8A8A8A;"><code>Desde {{item.simples.precio}} S/.</code></h2>
@@ -21,7 +21,7 @@
 	<div class="col-lg-8">
 		<uib-carousel interval="myInterval" no-wrap="noWrapSlides">
 	      <uib-slide ng-repeat="slide in item.fotos">
-	        <img ng-src="https://s3-us-west-2.amazonaws.com/katuq/{{slide}}" style="margin:auto; height: 450px; width: 750px">
+	        <img ng-src="https://s3-us-west-2.amazonaws.com/katuq/{{slide}}" style="margin:auto; height: 465px; width: 750px">
             <div class="carousel-caption">
                 <h4>{{item.nombre + $index}}</h4>
                 <p>{{slide}}</p>
@@ -58,24 +58,20 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="panel panel-default">
-            <table class="table">
+            <table class="table" style="font-size: 130%;">
                 <tr>
                     <td width="1%"></td>
-                    <td colspan="2"><h4><span class="glyphicon glyphicon-barcode"></span> Informacion del Item</h4></td>
+                    <td width="25%"><strong>Telefono:</strong></td>
+                    <td>{{item.telefonos}}</td>
                 </tr>
                 <tr>
                     <td width="1%"></td>
-                    <td width="25%">Telefono</td>
-                    <td>: {{item.telefonos}}</td>
+                    <td width="25%"><strong>Direccion:</strong></td>
+                    <td>{{item.direccion}}</td>
                 </tr>
                 <tr>
                     <td width="1%"></td>
-                    <td width="25%">Direccion</td>
-                    <td>: {{item.direccion}}</td>
-                </tr>
-                <tr>
-                    <td width="1%"></td>
-                    <td width="25%">Servicios Generales</td>
+                    <td width="25%"><strong>Servicios Generales:</strong></td>
                     <td>
                         <p ng-repeat="servicio in item.servicios">
                             {{servicio}}
@@ -84,7 +80,7 @@
                 </tr>
                 <tr>
                     <td width="1%"></td>
-                    <td width="20%">Descripcion :</td>
+                    <td width="20%"><strong>Descripcion:</strong></td>
                     <td>{{item.descripcion}}</td>
                 </tr>
             </table>
@@ -94,16 +90,16 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-body">
-              <table class="table">
+              <table class="table" style="font-size: 120%;">
                     <tr>
                         <td colspan="3">
-                            <h4><span class="glyphicon glyphicon-refresh"></span> Disponibilidad y <strong>Precios</strong></h4>
+                            <h3>Disponibilidad y Precios</h3>
                         </td>
                     </tr>
                     <tr class="active">
                         <th>Habitaciones</th>
                         <th>Precio S/.</th>
-                        <th>Disponibles (Und)</th>
+                        <th>Disponibles</th>
                     </tr>
                     <tr ng-hide="item.simples.cantidad == undefined" class="success">
                         <td>Simples</td>
@@ -118,7 +114,7 @@
                     <tr ng-hide="item.dobles.cantidad == undefined" class="info">
                         <td >Dobles</td>
                         <td>{{item.dobles.precio}} </td>
-                        <td><code>{{item.dobles.disponibles}} 5 de {{item.dobles.cantidad}}</code></td>
+                        <td><code>{{item.dobles.disponibles}} de {{item.dobles.cantidad}}</code></td>
                     </tr>
                     <tr ng-hide="item.departamentos.cantidad == undefined" class="danger">
                         <td >Departamentos</td>
@@ -135,14 +131,15 @@
     <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h4>Ubicacion Geografica</h4>
+                <h3>Ubicacion Geografica</h3>
                 <hr>
                 <ng-map 
                   center="{{item.latitude}}, {{item.longitude}}"
                   zoom="18"                  
                   tilt="45"                  
                   heading="90"                  
-                  scrollwheel="false">        
+                  scrollwheel="false"
+                  style="height: 430px;">        
                   <marker position="{{item.latitude}}, {{item.longitude}}"></marker>            
                 </ng-map>   
             </div>

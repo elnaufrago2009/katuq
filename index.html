@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html ng-app="katuq">
 <head>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Katuq</title>
-
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lora">
+	<base href="/">
+	<!-- Styles -->	
+	<link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="assets/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
 
 	<!-- Assets Js -->	
-	<script src="http://maps.google.com/maps/api/js"></script>
+	<script src="https://maps.google.com/maps/api/js"></script>
 	<script src="assets/js/angular.js"></script>
 	<script src="assets/js/angular-ui-router.js"></script>	
 	<script src="assets/js/ui-bootstrap-tpls.js"></script>
@@ -26,9 +25,12 @@
 	<script src="app/app.js"></script>
 	<script src="app/items/controller.js"></script>
 	<script src="app/shared/controller.js"></script>
+	<script src="app/login/controller.js"></script>
+
+	
 
 </head>
-<body style="font-family: 'Lora'">
+<body style="font-family: 'Titillium Web', sans-serif;">
 	<div ui-view="header"></div>
    	<div ui-view="contenido" class="container" ></div>
    	<div ui-view="footer"></div>

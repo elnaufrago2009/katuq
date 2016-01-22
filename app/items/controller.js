@@ -193,8 +193,8 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 });
 
 // controller items cuartos
-app.controller('itemsCuartosController', function($scope, $routeParams, $firebaseObject){
-	$scope.id = $routeParams.id;	
+app.controller('itemsCuartosController', function($scope, $stateParams, $firebaseObject){
+	$scope.id = $stateParams.id;	
 	var ref = new Firebase("https://katuq.firebaseio.com/items/");	
 	$scope.item = $firebaseObject(ref.child($scope.id));
 	
@@ -273,23 +273,23 @@ app.controller('itemsCuartosController', function($scope, $routeParams, $firebas
 });
 
 // controller items cuartos edit
-app.controller('itemsCuartosEditController', function($scope, $routeParams, $firebaseObject, $location){
-	$scope.id = $routeParams.id;
+app.controller('itemsCuartosEditController', function($scope, $stateParams, $firebaseObject, $location){
+	$scope.id = $stateParams.id;
 	var ref = new Firebase("https://katuq.firebaseio.com/items/");
 	$scope.item = $firebaseObject(ref.child($scope.id));
 
 	$scope.update_lista = function(item){
 		$scope.item.$save(item);
-		$location.path('/items_cuartos/' + $scope.id);
+		$location.path('cuartos/' + $scope.id);
 	}
 });
 
 // controller items View
-app.controller('itemsViewController', function($scope, $routeParams, $firebaseObject, NgMap){
+app.controller('itemsViewController', function($scope, $stateParams, $firebaseObject, NgMap){
 
 
 
-    $scope.id = $routeParams.id;
+    $scope.id = $stateParams.id;
 	var ref = new Firebase("https://katuq.firebaseio.com/items/");	
 	$scope.item = $firebaseObject(ref.child($scope.id));
 
