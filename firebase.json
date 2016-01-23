@@ -1,6 +1,10 @@
 {
   "firebase": "katuq",
   "public": "../katuq",
+  "rewrites": [ {
+    "source": "**",
+    "destination": "/index.html"
+  } ],
   "ignore": [
     "firebase.json",
     "**/.*",

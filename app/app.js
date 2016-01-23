@@ -1,12 +1,12 @@
 var app = angular.module("katuq", ['ui.router','ui.bootstrap', 'ngFileUpload', 'firebase', 'ngAnimate', 'ngMap']);
 
-app.config(function ($stateProvider, $urlRouterProvider){
-
-	$urlRouterProvider.otherwise("/items_index");
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider){
+    $locationProvider.html5Mode(true);
+	$urlRouterProvider.otherwise("/");
 	$stateProvider
 
-	.state('items_index', {
-      	url: "/items_index",      	
+	.state('items', {
+      	url: "/",      	
       	views: {
        		"header": { templateUrl: "app/layouts/theme/header.html" },
         	"contenido": { templateUrl: "app/items/index.html", controller: "itemsIndexController" },
@@ -14,28 +14,55 @@ app.config(function ($stateProvider, $urlRouterProvider){
       	}
     })
 
-    .state('items_view', {
-      url: "/items_view/:id",
-      templateUrl: 'app/items/view.html',
-      controller: "itemsViewController"
+    .state('login', {
+        url: "/login",        
+        views: {            
+            "contenido": { templateUrl: "app/login/index.html", controller: "loginController" }
+        }
     })
 
-    .state('items_admin', {
-      url: "/items_admin",
-      templateUrl: 'app/items/admin.html',
-      controller: "itemsAdminController"
+    .state('registro', {
+        url: "/registro",        
+        views: {            
+            "contenido": { templateUrl: "app/login/registro.html", controller: "loginRegistroController" }
+        }
     })
 
-    .state('items_cuartos', {
-      url: "/items_cuartos/:id",
-      templateUrl: 'app/items/cuartos.html',
-      controller: "itemsCuartosController"
+
+    .state('item', {
+        url: "/item/:id",                
+        views: {
+            "header": { templateUrl: "app/layouts/theme/header.html" },
+            "contenido": { templateUrl: "app/items/view.html", controller: "itemsViewController" },
+            "footer": { templateUrl: "app/layouts/theme/footer.html" }
+        }
     })
 
-    .state('items_cuartos_edit', {
-      url: "/items_cuartos/edit/:id",
-      templateUrl: 'app/items/cuartos_edit.html',
-      controller: "itemsCuartosEditController"
+    .state('admin', {
+      url: "/admin",
+        views: {
+            "header": { templateUrl: "app/layouts/theme/header.html" },
+            "contenido": { templateUrl: "app/items/admin.html", controller: "itemsAdminController" },
+            "footer": { templateUrl: "app/layouts/theme/footer.html" }
+        }
+    })
+
+    .state('cuartos', {
+        url: "/cuartos/:id",
+        views: {
+            "header": { templateUrl: "app/layouts/theme/header.html" },
+            "contenido": { templateUrl: "app/items/cuartos.html", controller: "itemsCuartosController" },
+            "footer": { templateUrl: "app/layouts/theme/footer.html" }
+        }
+    })
+
+    .state('cuartos_edit', {
+        url: "/cuartos/edit/:id",
+        views: {
+            "header": { templateUrl: "app/layouts/theme/header.html" },
+            "contenido": { templateUrl: "app/items/cuartos_edit.html", controller: "itemsCuartosEditController"},
+            "footer": { templateUrl: "app/layouts/theme/footer.html" }
+        }
     })
 
 });

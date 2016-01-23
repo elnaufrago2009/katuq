@@ -34,9 +34,18 @@ app.controller('itemsIndexController', function($scope, items){
 
 
 // controller items admin
-app.controller('itemsAdminController', function($scope, items, $uibModal){
-	$scope.items = items.getAll();
+app.controller('itemsAdminController', function($scope, items, $uibModal, $firebaseAuth, $firebaseArray){
 
+	var ref = new Firebase("https://katuq.firebaseio.com/items");
+   	$scope.authObj = $firebaseAuth(ref);    		
+	var authData = $scope.authObj.$getAuth();	
+
+	$scope.items = $firebaseArray(ref.orderByChild("user").equalTo(authData.uid));
+
+
+
+
+	//$scope.items = items.getAll();
 	// remove item
 	$scope.remove = function(item){
 		var index_item = $scope.items.indexOf(item);
@@ -103,7 +112,11 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 			// antes de crear uno nuevo agregamos mensaje inicial
 			item.messages = [];
 			item.messages.push({user:'Admin', contenido: 'Bievenido aqui puedes mandar tus mensajes'});
-			// agregamos item
+			// agregamos usuario
+			
+
+			
+			item.user = authData.uid;
 			items.add(item);
 			
 		});
@@ -193,8 +206,8 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 });
 
 // controller items cuartos
-app.controller('itemsCuartosController', function($scope, $routeParams, $firebaseObject){
-	$scope.id = $routeParams.id;	
+app.controller('itemsCuartosController', function($scope, $stateParams, $firebaseObject){
+	$scope.id = $stateParams.id;	
 	var ref = new Firebase("https://katuq.firebaseio.com/items/");	
 	$scope.item = $firebaseObject(ref.child($scope.id));
 	
@@ -273,23 +286,23 @@ app.controller('itemsCuartosController', function($scope, $routeParams, $firebas
 });
 
 // controller items cuartos edit
-app.controller('itemsCuartosEditController', function($scope, $routeParams, $firebaseObject, $location){
-	$scope.id = $routeParams.id;
+app.controller('itemsCuartosEditController', function($scope, $stateParams, $firebaseObject, $location){
+	$scope.id = $stateParams.id;
 	var ref = new Firebase("https://katuq.firebaseio.com/items/");
 	$scope.item = $firebaseObject(ref.child($scope.id));
 
 	$scope.update_lista = function(item){
 		$scope.item.$save(item);
-		$location.path('/items_cuartos/' + $scope.id);
+		$location.path('cuartos/' + $scope.id);
 	}
 });
 
 // controller items View
-app.controller('itemsViewController', function($scope, $routeParams, $firebaseObject, NgMap){
+app.controller('itemsViewController', function($scope, $stateParams, $firebaseObject, NgMap){
 
 
 
-    $scope.id = $routeParams.id;
+    $scope.id = $stateParams.id;
 	var ref = new Firebase("https://katuq.firebaseio.com/items/");	
 	$scope.item = $firebaseObject(ref.child($scope.id));
 
