@@ -21,7 +21,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider){
         }
     })
 
-    .state('registro', {
+    .state('sd registro', {
         url: "/registro",        
         views: {            
             "contenido": { templateUrl: "app/login/registro.html", controller: "loginRegistroController" }

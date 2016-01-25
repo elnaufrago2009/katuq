@@ -1,35 +1,87 @@
 	<!-- Menu -->
-	<nav class="navbar navbar-default navbar-static-top">
-      	<div class="container">
-        	<div class="navbar-header">
-          		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            	<span class="sr-only">Toggle navigation</span>
-	            	<span class="icon-bar"></span>
-	            	<span class="icon-bar"></span>
-	            	<span class="icon-bar"></span>
-          		</button>
-          		<a class="navbar-brand" href="/" style="font-size: 24px;">Katuq.com</a>
-        	</div>
-	        <div class="navbar-collapse collapse" ng-controller="statusLoginController" >	        
-	          	<!-- Inicio menu izquierdo-->
-	          	<ul class="nav navbar-nav">	              	
-	            	<li ng-class="{active: isActive('/admin')}" ng-show="status">
+	<nav class="navbar navbar-default" role="navigation" ng-controller="statusLoginController">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+
+		        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+		       		<span class="icon-bar"></span>
+		        	<span class="icon-bar"></span>
+		        </button>
+	        	<a class="navbar-brand" href="/">Katuq.com</a>
+	      	</div>
+	    
+	      	<!-- Collect the nav links, forms, and other content for toggling -->
+	      	<div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+	      
+		        <ul class="nav navbar-nav">		          
+					<li dropdown ng-class="{active: lugar != 'Lugares'}">
+						<a href="#" dropdown-toggle >{{lugar}} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="" ng-click="changeLugar('ninguno')">Ninguno</a></li>
+							<li><a href="" ng-click="changeLugar('ciudad_nueva')">Ciudad Nueva</a></li>
+							<li><a href="" ng-click="changeLugar('conosur')">Cono Sur</a></li>
+							<li><a href="" ng-click="changeLugar('villani')">Villani</a></li>
+							<li><a href="" ng-click="changeLugar('natividad')">Natividad</a></li>
+							<li><a href="" ng-click="changeLugar('centro')">Centro</a></li>
+						</ul>
+					</li>
+					<li dropdown>
+						<a href="#" dropdown-toggle>Precio <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="" ng-click="changePrecio('ninguno')">Ninguno</a></li>
+							<li><a href="" ng-click="changePrecio('mas_baratos')">Mas Baratos</a></li>
+							<li><a href="" ng-click="changePrecio('mas_caros')">Mas Caros</a></li>
+						</ul>
+					</li>
+					<li dropdown>
+						<a href="#" dropdown-toggle>Estrellas <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+					<li dropdown>
+						<a href="#" dropdown-toggle>Ultimos <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+					<li ng-class="{active: isActive('/admin')}" ng-show="status">
 	            		<a href="/admin">Administrar</a>
 	            	</li>
-	          	</ul>
-	          	<!-- Inicio menu Derecho -->
-	          	<ul class="nav navbar-nav navbar-right">
-	            	<li>
-	              		<a href="" ng-click="unlogin()" ng-show="status">		
-	              			{{authData.password.email}} 
-	              			<span class="glyphicon glyphicon-share"></span>
-	              		</a>
-	              		<a href="/login" ng-hide="status">
-	                		Login
-	              		</a>	              		
-	            	</li>
-	          	</ul>         
-	        </div><!--/.nav-collapse -->
-    	</div>
+		          
+		        </ul>
+		        <form class="navbar-form navbar-left" role="search">
+		        	<div class="form-group">
+		        		<input type="text" class="form-control" placeholder="Nombre del Hotel">
+		        	</div>
+		        	<button type="submit" class="btn btn-default">Buscar</button>
+		        </form>
+	        	<ul class="nav navbar-nav navbar-right">	          			      			
+	          		<li>
+		            	<a href="" ng-click="unlogin()" ng-show="status">		
+		              		{{authData.password.email}} 
+		              		<span class="glyphicon glyphicon-share"></span>
+		              	</a>
+		              	<a href="/login" ng-hide="status">
+		                	Login
+		              	</a>	              		
+		            </li>
+	        	</ul>
+	      	</div><!-- /.navbar-collapse -->
+		</div>
+			
     </nav>
+
+
     <!-- End Menu -->
