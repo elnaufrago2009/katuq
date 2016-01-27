@@ -2,8 +2,26 @@
 	<div class="col-lg-6">
 		<h1>Hospedajes <small>Ultimos Agregados</small></h1>
 	</div>
-	<div class="col-lg-6 pull-right">
-		<br>        
+	<div class="col-lg-6 pull-right">		
+         <nav>
+          <ul class="pagination pull-right">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>       
 	</div>
 </div>
 <hr>
@@ -34,28 +52,38 @@
                 </td>
             </tr>
 
-            <tr ng-show="item.dobles.cantidad == undefined">
+            <tr ng-hide="item.distrito == undefined">
                 <td>
-                    <b>Cuartos dobles </b>
+                    <b>Distrito </b>
                 </td>
                 <td>
-                    <code>No Definido</code>
-                </td>
-            </tr>
-            <tr ng-hide="item.dobles.cantidad == undefined">
-                <td>
-                    <b>Cuartos dobles </b>
-                </td>
-                <td>
-                    <code>{{item.dobles.disponibles}}/{{item.dobles.cantidad}}</code>
+                    {{item.distrito}}
                 </td>
             </tr>
-        </table>        
-        <p class="text-center">
-            <a class="btn btn-primary" href="item/{{item.$id}}">
-            	<span class="glyphicon glyphicon-eye-open"></span> Ver mas.
-            </a>
-        </p>
+            <tr ng-show="item.distrito == undefined">
+                <td>
+                    <b>Distrito </b>
+                </td>
+                <td>
+                    No Definido
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <b>Calificacion </b>
+                </td>
+                <td>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </td>
+            </tr>
+
+
+        </table>                
       </div>
     </div>
   </div>

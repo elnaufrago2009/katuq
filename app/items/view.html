@@ -1,8 +1,7 @@
 <div class="row">
     <div class="col-lg-8">
         <ol class="breadcrumb">
-          <li><a href="#items_index">Inicio</a></li>
-          <li><a href="#items_index">Items</a></li>
+          <li><a href="/">Inicio</a></li>          
           <li class="active">{{item.nombre}} </li>
         </ol>
     </div>
@@ -10,10 +9,17 @@
 
 <div class="row">
     <div class="col-lg-8">
-        <h1>{{item.nombre}} <small> - Ubicado en {{item.distrito}}</small></h1>
+        <h1>{{item.nombre}} <small>Ubicado en {{item.distrito}}</small></h1>
     </div>
     <div class="col-lg-4 text-right">
-        <h2 style="color: #8A8A8A;"><code>Desde {{item.simples.precio}} S/.</code></h2>
+        <h2 style="color: #8A8A8A;">
+            <small>desde {{item.simples.precio}} S/.</small>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+        </h2>
     </div>
 </div>
 
@@ -103,22 +109,22 @@
                     </tr>
                     <tr ng-hide="item.simples.cantidad == undefined" class="success">
                         <td>Simples</td>
-                        <td>{{item.simples.precio}} </td>
+                        <td>{{item.simples.precio}} S/.</td>
                         <td><code>{{item.simples.disponibles}} de {{item.simples.cantidad}}</code></td>
                     </tr >
                     <tr ng-hide="item.normales.cantidad == undefined" class="warning">
                         <td>Normales</td>
-                        <td>{{item.normales.precio}} </td>
+                        <td>{{item.normales.precio}} S/.</td>
                         <td><code>{{item.normales.disponibles}} de {{item.normales.cantidad}}</code></td>
                     </tr>
                     <tr ng-hide="item.dobles.cantidad == undefined" class="info">
                         <td >Dobles</td>
-                        <td>{{item.dobles.precio}} </td>
+                        <td>{{item.dobles.precio}} S/.</td>
                         <td><code>{{item.dobles.disponibles}} de {{item.dobles.cantidad}}</code></td>
                     </tr>
                     <tr ng-hide="item.departamentos.cantidad == undefined" class="danger">
                         <td >Departamentos</td>
-                        <td>{{item.departamentos.precio}} </td>
+                        <td>{{item.departamentos.precio}} S/.</td>
                         <td><code>{{item.departamentos.disponibles}} de {{item.departamentos.cantidad}}</code></td>
                     </tr>
                 </table>

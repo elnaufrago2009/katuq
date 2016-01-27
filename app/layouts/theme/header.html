@@ -28,32 +28,28 @@
 							<li><a href="" ng-click="changeLugar('centro')">Centro</a></li>
 						</ul>
 					</li>
-					<li dropdown>
-						<a href="#" dropdown-toggle>Precio <b class="caret"></b></a>
+					<li dropdown ng-class="{active: precio != 'Precios'}">
+						<a href="#" dropdown-toggle>{{precio}} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="" ng-click="changePrecio('ninguno')">Ninguno</a></li>
-							<li><a href="" ng-click="changePrecio('mas_baratos')">Mas Baratos</a></li>
-							<li><a href="" ng-click="changePrecio('mas_caros')">Mas Caros</a></li>
+							<li><a href="" ng-click="changePrecio('precio_baratos')">Precios Baratos</a></li>
+							<li><a href="" ng-click="changePrecio('precio_caros')">Precios Caros</a></li>
 						</ul>
 					</li>
-					<li dropdown>
-						<a href="#" dropdown-toggle>Estrellas <b class="caret"></b></a>
+					<li dropdown ng-class="{active: estrella != 'Estrellas'}">
+						<a href="#" dropdown-toggle>{{estrella}} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
+							<li><a href="" ng-click="changeEstrellas('ninguno')">Ninguno</a></li>
+							<li><a href="" ng-click="changeEstrellas('mejor_calificados')">Mejor Calificados</a></li>
+							<li><a href="" ng-click="changeEstrellas('peor_calificados')">Peor Calificados</a></li>							
 						</ul>
 					</li>
-					<li dropdown>
-						<a href="#" dropdown-toggle>Ultimos <b class="caret"></b></a>
+					<li dropdown ng-class="{active: ultimos != 'Ultimos'}">
+						<a href="#" dropdown-toggle>{{ultimos}} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
+							<li><a href="" ng-click="changeUltimos('ninguno')">Ninguno</a></li>
+							<li><a href="" ng-click="changeUltimos('ultimos_agregados')">Nuevos Agreados</a></li>
+							<li><a href="" ng-click="changeUltimos('ultimos_antiguos')">Ultimos Agregados</a></li>							
 						</ul>
 					</li>
 					<li ng-class="{active: isActive('/admin')}" ng-show="status">

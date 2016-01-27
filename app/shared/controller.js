@@ -23,8 +23,24 @@ app.controller('statusLoginController', function ($scope, $firebaseAuth, $locati
 		$location.path('/items_index');
 	}
 
-  $rootScope.lugar = "Lugares";
+   // opciones de busqueda 
 
+   // parametros iniciales
+   if($rootScope.lugar == undefined){
+    $rootScope.lugar = "Lugares";  
+   }
+  if ($rootScope.precio == undefined) {
+    $rootScope.precio = "Precios";  
+  };  
+  if ($rootScope.estrella == undefined) {
+    $rootScope.estrella = "Estrellas";  
+  };  
+  if ($rootScope.ultimos == undefined) {
+    $rootScope.ultimos = "Ultimos";  
+  };
+  
+
+  // Lugares
   $scope.changeLugar = function(nombre) {
     if(nombre == 'ninguno'){
       $rootScope.lugar = 'Lugares';
@@ -43,10 +59,53 @@ app.controller('statusLoginController', function ($scope, $firebaseAuth, $locati
     }
     if(nombre == 'villani'){
       $rootScope.lugar = 'Villani';
-    }
-
-    
-    
+    }    
   }
+
+
+
+  // Precios
+  $scope.changePrecio = function(precio) {
+    if(precio == 'ninguno'){
+      $rootScope.precio = 'Precios';
+    }
+    if(precio == 'precio_baratos'){
+      $rootScope.precio = 'Precios mas Baratos';
+    }
+    if(precio == 'precio_caros'){
+      $rootScope.precio = 'Precios mas Caros';
+    }    
+  }
+
+
+
+  // Estrellas
+  $scope.changeEstrellas = function(estrella) {
+    if(estrella == 'ninguno'){
+      $rootScope.estrella = 'Estrellas';
+    }
+    if(estrella == 'mejor_calificados'){
+      $rootScope.estrella = 'Mejor Calificados';
+    }
+    if(estrella == 'peor_calificados'){
+      $rootScope.estrella = 'Peor Calificados';
+    }    
+  }
+
+
+
+  // Ultimos
+  $scope.changeUltimos = function(ultimo) {
+    if(ultimo == 'ninguno'){
+      $rootScope.ultimos = 'Ultimos';
+    }
+    if(ultimo == 'ultimos_agregados'){
+      $rootScope.ultimos = 'Ultimos Agregados';
+    }
+    if(ultimo == 'ultimos_antiguos'){
+      $rootScope.ultimos = 'Mas Antiguos';
+    }    
+  }
+
 
 });
