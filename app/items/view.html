@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row" style="font-size: 120%;">
     <div class="col-lg-8">
         <ol class="breadcrumb">
-          <li><a href="/">Inicio</a></li>          
+          <li><a href="/">Inicio</a></li>
           <li class="active">{{item.nombre}} </li>
         </ol>
     </div>
@@ -52,12 +52,13 @@
 	</div>
 	<div class="col-lg-4">
 		<div class="panel panel-default">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-comment"></span> Contactar Online                
+            <div class="panel-heading" style="font-size: 130%;">
+                <span class="glyphicon glyphicon-comment"></span> Chat Online
+                                
             </div>
             <div class="panel-body" style="height: 360px; overflow-y: scroll;">            
-                <div class="clearfix" ng-repeat="message in item.messages">                           
-                    <strong class="primary-font">{{message.user}}</strong>                           
+                <div class="clearfix" ng-repeat="message in item.messages"  style="font-size: 115%;">
+                    <strong class="primary-font">{{message.user}}</strong>
                     <p>
                         {{message.contenido}}
                     </p>

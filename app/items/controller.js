@@ -34,9 +34,18 @@ app.controller('itemsIndexController', function($scope, items){
 
 
 // controller items admin
-app.controller('itemsAdminController', function($scope, items, $uibModal){
-	$scope.items = items.getAll();
+app.controller('itemsAdminController', function($scope, items, $uibModal, $firebaseAuth, $firebaseArray){
 
+	var ref = new Firebase("https://katuq.firebaseio.com/items");
+   	$scope.authObj = $firebaseAuth(ref);    		
+	var authData = $scope.authObj.$getAuth();	
+
+	$scope.items = $firebaseArray(ref.orderByChild("user").equalTo(authData.uid));
+
+
+
+
+	//$scope.items = items.getAll();
 	// remove item
 	$scope.remove = function(item){
 		var index_item = $scope.items.indexOf(item);
@@ -103,7 +112,11 @@ app.controller('itemsAdminController', function($scope, items, $uibModal){
 			// antes de crear uno nuevo agregamos mensaje inicial
 			item.messages = [];
 			item.messages.push({user:'Admin', contenido: 'Bievenido aqui puedes mandar tus mensajes'});
-			// agregamos item
+			// agregamos usuario
+			
+
+			
+			item.user = authData.uid;
 			items.add(item);
 			
 		});
