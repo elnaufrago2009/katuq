@@ -9,16 +9,31 @@
 
 <div class="row">
     <div class="col-lg-8">
-        <h1>{{item.nombre}} <small>Ubicado en {{item.distrito}}</small></h1>
+        <h1>{{item.nombre}} <small>Ubicado en {{item.distrito}} - desde {{item.simples.precio}} S/.</small></h1>
     </div>
     <div class="col-lg-4 text-right">
         <h2 style="color: #8A8A8A;">
-            <small>desde {{item.simples.precio}} S/.</small>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
+            <small>Califica</small>
+            <span 
+                ng-class="{'glyphicon glyphicon-star': star1 == true, 'glyphicon glyphicon-star-empty': star1 == false}"
+                ng-click="changeStart(1)">
+            </span>
+            <span 
+                ng-class="{'glyphicon glyphicon-star': star2 == true, 'glyphicon glyphicon-star-empty': star2 == false}"
+                ng-click="changeStart(2)">
+            </span>
+            <span 
+                ng-class="{'glyphicon glyphicon-star': star3 == true, 'glyphicon glyphicon-star-empty': star3 == false}"
+                ng-click="changeStart(3)">
+            </span>
+            <span 
+                ng-class="{'glyphicon glyphicon-star': star4 == true, 'glyphicon glyphicon-star-empty': star4 == false}"
+                ng-click="changeStart(4)">
+            </span>
+            <span 
+                ng-class="{'glyphicon glyphicon-star': star5 == true, 'glyphicon glyphicon-star-empty': star5 == false}"
+                ng-click="changeStart(5)">
+            </span>
         </h2>
     </div>
 </div>

@@ -305,6 +305,95 @@ app.controller('itemsViewController', function($scope, $stateParams, $firebaseOb
 		$scope.item.$save();
 	};
 
+	//starts inicio
+	$scope.item.$loaded(function(data){
+    	var i = $scope.item.estrella;		
+		if( i >= 1 && i <= 10){
+			$scope.star1 = true;
+			$scope.star2 = false;
+			$scope.star3 = false;
+			$scope.star4 = false;
+			$scope.star5 = false;
+		}
+		if( i >= 11 && i <= 20){
+			$scope.star1 = true;
+			$scope.star2 = true;
+			$scope.star3 = false;
+			$scope.star4 = false;
+			$scope.star5 = false;
+		}
+		if( i >= 21 && i <= 30){
+			$scope.star1 = true;
+			$scope.star2 = true;
+			$scope.star3 = true;
+			$scope.star4 = false;
+			$scope.star5 = false;
+		}
+		if( i >= 31 && i <= 40){
+			$scope.star1 = true;
+			$scope.star2 = true;
+			$scope.star3 = true;
+			$scope.star4 = true;
+			$scope.star5 = false;
+		}
+		if( i >= 41 ){
+			$scope.star1 = true;
+			$scope.star2 = true;
+			$scope.star3 = true;
+			$scope.star4 = true;
+			$scope.star5 = true;
+		}
+  	});
+  	
+ 	var cont = 0;
+	$scope.changeStart = function (start){
+		if(start == 1){
+			$scope.item.estrella = $scope.item.estrella + 1;
+			$scope.star1 = true;
+			$scope.star2 = false;
+			$scope.star3 = false;
+			$scope.star4 = false;
+			$scope.star5 = false;
+			cont++;
+		}
+		if(start == 2){
+			$scope.item.estrella = $scope.item.estrella + 2;
+			$scope.star1 = true;
+			$scope.star2 = true;
+			$scope.star3 = false;
+			$scope.star4 = false;
+			$scope.star5 = false;
+			cont++;	
+		}
+		if(start == 3){
+			$scope.item.estrella = $scope.item.estrella + 3;
+			$scope.star1 = true;
+			$scope.star2 = true;
+			$scope.star3 = true;
+			$scope.star4 = false;
+			$scope.star5 = false;
+			cont++;
+		}
+		if(start == 4){
+			$scope.item.estrella = $scope.item.estrella + 4;
+			$scope.star1 = true;
+			$scope.star2 = true;
+			$scope.star3 = true;
+			$scope.star4 = true;
+			$scope.star5 = false;
+			cont++;
+		}
+		if(start == 5){
+			$scope.item.estrella = $scope.item.estrella + 5;
+			$scope.star1 = true;
+			$scope.star2 = true;
+			$scope.star3 = true;
+			$scope.star4 = true;
+			$scope.star5 = true;
+			cont++;
+		}
+		$scope.item.$save();
+	};
 	
 	// google map
 	var vm = this;
