@@ -117,6 +117,7 @@ app.controller('itemsAdminController', function($scope, items, $uibModal, $fireb
 
 			
 			item.user = authData.uid;
+			item.estrella = 1;
 			items.add(item);
 			
 		});
@@ -405,7 +406,9 @@ app.controller('itemsViewController', function($scope, $stateParams, $firebaseOb
 			$scope.star5 = true;
 			cont++;
 		}
-		$scope.item.$save();
+		if(cont <= 2){
+			$scope.item.$save();	
+		}		
 	};
 	
 	// google map
