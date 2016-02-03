@@ -28,8 +28,13 @@ app.factory('items', function($firebaseArray){
 
 
 // controller items index
-app.controller('itemsIndexController', function($scope, items){
-	$scope.items = items.getAll();
+app.controller('itemsIndexController', function($scope, $firebaseArray){
+    
+    var baseRef = new Firebase('https://katuq.firebaseio.com/items');
+    var scrollRef = new Firebase.util.Scroll(baseRef, 'number');
+    $scope.items = $firebaseArray(scrollRef);
+    $scope.items.scroll = scrollRef.scroll;	
+    
 });
 
 

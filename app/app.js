@@ -1,4 +1,4 @@
-var app = angular.module("katuq", ['ui.router','ui.bootstrap', 'ngFileUpload', 'firebase', 'ngAnimate', 'ngMap']);
+var app = angular.module("katuq", ['ui.router','ui.bootstrap', 'ngFileUpload', 'firebase', 'ngAnimate', 'ngMap', 'infinite-scroll']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider){
     $locationProvider.html5Mode(true);

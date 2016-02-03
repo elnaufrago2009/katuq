@@ -3,30 +3,12 @@
 		<h1>Hospedajes <small>Ultimos Agregados</small></h1>
 	</div>
 	<div class="col-lg-6 pull-right">		
-         <nav>
-          <ul class="pagination pull-right">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>       
+             
 	</div>
 </div>
 <hr>
 
-<div class="row">
+<div class="row" infinite-scroll="items.scroll.next(4)" infinite-scroll-distance="0">
   <div class="col-sm-3" ng-repeat="item in items | filter:buscar">    
     <div class="thumbnail">
     	<a href="item/{{item.$id}}">
